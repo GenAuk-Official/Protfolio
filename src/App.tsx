@@ -32,7 +32,6 @@ import {
 import { useState } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Counter } from "@/components/site/Counter";
-import heroImg from "@/assets/hero-ai.jpg";
 import vadapavImg from "@/assets/project-vadapav.jpg";
 
 /* ---------- shared bits ---------- */
@@ -59,7 +58,7 @@ function SectionHeader({
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
       variants={fadeUp}
-      className={`mb-14 ${center ? "text-center mx-auto max-w-2xl" : "max-w-2xl"}`}
+      className={`mb-10 ${center ? "text-center mx-auto max-w-2xl" : "max-w-2xl"}`}
     >
       <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted-foreground">
         <span className="size-1.5 rounded-full bg-primary shadow-[0_0_10px] shadow-primary" />
@@ -75,7 +74,7 @@ function SectionHeader({
 
 function Hero() {
   return (
-    <section id="home" className="relative pt-32 sm:pt-40 pb-20 sm:pb-28 overflow-hidden">
+    <section id="home" className="relative pt-28 sm:pt-36 pb-14 sm:pb-20 overflow-hidden">
       {/* animated background lights */}
       <div className="pointer-events-none absolute inset-0 grid-bg" />
       <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[900px] rounded-full opacity-40 blur-3xl"
@@ -116,23 +115,6 @@ function Hero() {
             <a href="#portfolio" className="btn-ghost">View Portfolio</a>
           </motion.div>
         </motion.div>
-
-        {/* subtle scroll cue */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="mt-20 flex justify-center"
-        >
-          <div className="h-10 w-6 rounded-full border border-white/15 flex items-start justify-center p-1">
-            <motion.div
-              animate={{ y: [0, 14, 0] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-              className="h-1.5 w-1.5 rounded-full bg-primary"
-            />
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );
@@ -151,13 +133,13 @@ const logos = ["Northwind", "Helios", "Kairo", "Lumen", "Meridian", "Orbit", "Ve
 
 function Trusted() {
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4">
         <p className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground">
           Trusted by startups & growing businesses
         </p>
 
-        <div className="mt-8 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+        <div className="mt-6 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
           <div className="flex gap-14 animate-marquee w-max">
             {[...logos, ...logos].map((l, i) => (
               <div key={i} className="text-xl sm:text-2xl font-semibold text-muted-foreground/60 whitespace-nowrap">
@@ -167,7 +149,7 @@ function Trusted() {
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((st) => (
             <motion.div
               key={st.l}
@@ -203,7 +185,7 @@ const services = [
 
 function Services() {
   return (
-    <section id="services" className="py-24 sm:py-32">
+    <section id="services" className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Services"
@@ -242,73 +224,7 @@ function Services() {
   );
 }
 
-/* ---------- WHY CHOOSE ---------- */
-
-const whys = [
-  "Business-focused solutions",
-  "Scalable architecture",
-  "Fast delivery",
-  "Premium design",
-  "AI-first mindset",
-  "Long-term support",
-];
-
-function WhyChoose() {
-  return (
-    <section className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-12 items-center">
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted-foreground">
-            <span className="size-1.5 rounded-full bg-primary shadow-[0_0_10px] shadow-primary" />
-            Why GenAuk
-          </span>
-          <h2 className="mt-4 text-3xl sm:text-5xl font-bold tracking-tight">
-            A studio that treats your product like <span className="text-gradient">its own</span>.
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            We combine strategic thinking, world-class engineering, and a designer's eye —
-            so every screen, endpoint, and interaction earns its place.
-          </p>
-
-          <ul className="mt-8 grid sm:grid-cols-2 gap-3">
-            {whys.map((w) => (
-              <li key={w} className="flex items-center gap-3 glass rounded-xl px-4 py-3">
-                <span className="inline-grid place-items-center size-6 rounded-full bg-primary/15 text-primary">
-                  <Check className="size-3.5" />
-                </span>
-                <span className="text-sm">{w}</span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="relative"
-        >
-          <div className="relative aspect-square rounded-3xl overflow-hidden glass-strong">
-            <img src={heroImg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-70 animate-floaty" loading="lazy" width={1280} height={1280} />
-            <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 glass rounded-2xl p-4">
-              <div className="text-xs text-muted-foreground">Uptime last 90 days</div>
-              <div className="mt-1 flex items-end justify-between">
-                <div className="text-3xl font-bold text-gradient">99.99%</div>
-                <div className="flex gap-1">
-                  {Array.from({ length: 24 }).map((_, i) => (
-                    <div key={i} className="w-1 rounded-full bg-primary/70" style={{ height: `${8 + Math.random() * 24}px` }} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+/* WhyChoose section removed */
 
 /* ---------- PROCESS ---------- */
 
@@ -324,7 +240,7 @@ const steps = [
 
 function Process() {
   return (
-    <section id="process" className="py-24 sm:py-32">
+    <section id="process" className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Process"
@@ -363,7 +279,7 @@ function Process() {
 
 function Portfolio() {
   return (
-    <section id="portfolio" className="py-24 sm:py-32">
+    <section id="portfolio" className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Selected Work"
@@ -389,7 +305,7 @@ function Portfolio() {
                   width={1280}
                   height={960}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-background/80 via-background/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-background/40 via-transparent to-transparent" />
               </div>
               <div className="p-8 sm:p-10 flex flex-col">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -443,7 +359,7 @@ function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="glass rounded-3xl p-10 min-h-[300px] flex flex-col justify-between"
+              className="glass rounded-3xl p-8 min-h-[260px] flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -498,7 +414,7 @@ const stack: { name: string; slug: string }[] = [
 
 function TechStack() {
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Technologies"
@@ -560,7 +476,7 @@ const testimonials = [
 
 function Testimonials() {
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-14 sm:py-20">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Testimonials"
@@ -611,7 +527,7 @@ const faqs = [
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-14 sm:py-20">
       <div className="mx-auto max-w-3xl px-4">
         <SectionHeader
           eyebrow="FAQ"
@@ -652,12 +568,20 @@ function FAQ() {
 
 function About() {
   return (
-    <section id="about" className="py-24 sm:py-32">
+    <section id="about" className="py-14 sm:py-20">
       <div className="mx-auto max-w-4xl px-4 text-center">
         <SectionHeader
           eyebrow="About GenAuk"
           title={<>A small team, obsessed with <span className="text-gradient">craft</span>.</>}
         />
+        <motion.blockquote
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="-mt-8 mb-10 text-xl sm:text-2xl font-semibold italic text-gradient"
+        >
+          "A team that treats your product like its own."
+        </motion.blockquote>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -670,7 +594,7 @@ function About() {
           engineering discipline to ship products that move the business.
         </motion.p>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-2 text-xs text-muted-foreground">
+        <div className="mt-8 flex flex-wrap justify-center gap-2 text-xs text-muted-foreground">
           {["Innovation", "AI", "Technology", "Quality", "Business Growth", "Problem Solving"].map((t) => (
             <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
               {t}
@@ -686,13 +610,13 @@ function About() {
 
 function CTA() {
   return (
-    <section id="contact" className="py-24 sm:py-32">
+    <section id="contact" className="py-14 sm:py-20">
       <div className="mx-auto max-w-5xl px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl glass-strong p-10 sm:p-16 text-center"
+          className="relative overflow-hidden rounded-3xl glass-strong p-8 sm:p-12 text-center"
         >
           <div className="absolute inset-0 opacity-70"
                style={{ background: "radial-gradient(ellipse at center, oklch(0.66 0.22 285 / 0.35), transparent 60%)" }} />
@@ -703,20 +627,20 @@ function CTA() {
             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
               Tell us what you're building. We'll reply within one business day with next steps.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a href="mailto:hello@genauk.com" className="btn-primary">
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <a href="mailto:hellogenauk@gmail.com" className="btn-primary">
                 Book a Consultation <ArrowRight className="size-4" />
               </a>
-              <a href="mailto:hello@genauk.com?subject=Quote%20request" className="btn-ghost">Get a Quote</a>
+              <a href="mailto:hellogenauk@gmail.com?subject=Quote%20request" className="btn-ghost">Get a Quote</a>
             </div>
 
-            <div className="mt-10 grid sm:grid-cols-3 gap-3 text-sm text-muted-foreground">
-              <div className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center">
-                <Mail className="size-4 text-primary" /> hello@genauk.com
-              </div>
-              <div className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center">
-                <Phone className="size-4 text-primary" /> +91 000 000 0000
-              </div>
+            <div className="mt-8 grid sm:grid-cols-3 gap-3 text-sm text-muted-foreground">
+              <a href="mailto:hellogenauk@gmail.com" className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center hover:border-primary/40 transition-colors">
+                <Mail className="size-4 text-primary" /> hellogenauk@gmail.com
+              </a>
+              <a href="tel:+918208854485" className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center hover:border-primary/40 transition-colors">
+                <Phone className="size-4 text-primary" /> +91 82088 54485
+              </a>
               <div className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center">
                 <MapPin className="size-4 text-primary" /> Remote · Worldwide
               </div>
@@ -734,11 +658,11 @@ const LOGO_URL = "/genauk-logo.png";
 
 function Footer() {
   return (
-    <footer className="border-t border-white/5 pt-16 pb-10">
+    <footer className="border-t border-white/5 pt-12 pb-8">
       <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-4 gap-10">
         <div className="md:col-span-1">
           <a href="#home" className="flex items-center gap-2">
-            <img src={LOGO_URL} alt="GenAuk" className="h-8 w-8 rounded-lg bg-white p-0.5" width={32} height={32} />
+            <img src={LOGO_URL} alt="GenAuk" className="h-9 w-9 rounded-lg" width={36} height={36} />
             <span className="font-semibold">GenAuk</span>
           </a>
           <p className="mt-3 text-sm text-muted-foreground max-w-xs">
@@ -772,7 +696,7 @@ function Footer() {
         ]} />
       </div>
 
-      <div className="mt-12 border-t border-white/5 pt-6 mx-auto max-w-7xl px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+      <div className="mt-10 border-t border-white/5 pt-5 mx-auto max-w-7xl px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
         <div>© {new Date().getFullYear()} GenAuk. All rights reserved.</div>
         <div>Crafted with intent. Deployed with care.</div>
       </div>
@@ -823,7 +747,7 @@ export default function App() {
         <Hero />
         <Trusted />
         <Services />
-        <WhyChoose />
+
         <Process />
         <Portfolio />
         <TechStack />

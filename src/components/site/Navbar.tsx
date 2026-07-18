@@ -46,9 +46,9 @@ export function Navbar() {
             <img
               src={LOGO_URL}
               alt="GenAuk"
-              className="h-8 w-8 rounded-lg bg-white p-0.5 transition-transform group-hover:scale-105"
-              width={32}
-              height={32}
+              className="h-9 w-9 rounded-lg transition-transform group-hover:scale-105"
+              width={36}
+              height={36}
             />
             <span className="text-base font-semibold tracking-tight">GenAuk</span>
           </a>
