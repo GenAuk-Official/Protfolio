@@ -1,0 +1,838 @@
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Bot,
+  Workflow,
+  Globe,
+  Layers,
+  Smartphone,
+  PenTool,
+  Sparkles,
+  Cloud,
+  Check,
+  Search,
+  Target,
+  Palette,
+  Code2,
+  ShieldCheck,
+  Rocket,
+  LifeBuoy,
+  Star,
+  Plus,
+  Minus,
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Twitter,
+  Linkedin,
+  ExternalLink,
+} from "lucide-react";
+import { useState } from "react";
+import { Navbar } from "@/components/site/Navbar";
+import { Counter } from "@/components/site/Counter";
+import heroImg from "@/assets/hero-ai.jpg";
+import vadapavImg from "@/assets/project-vadapav.jpg";
+
+/* ---------- shared bits ---------- */
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
+function SectionHeader({
+  eyebrow,
+  title,
+  desc,
+  center = true,
+}: {
+  eyebrow: string;
+  title: React.ReactNode;
+  desc?: string;
+  center?: boolean;
+}) {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={fadeUp}
+      className={`mb-14 ${center ? "text-center mx-auto max-w-2xl" : "max-w-2xl"}`}
+    >
+      <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted-foreground">
+        <span className="size-1.5 rounded-full bg-primary shadow-[0_0_10px] shadow-primary" />
+        {eyebrow}
+      </span>
+      <h2 className="mt-4 text-3xl sm:text-5xl font-bold tracking-tight">{title}</h2>
+      {desc && <p className="mt-4 text-base sm:text-lg text-muted-foreground">{desc}</p>}
+    </motion.div>
+  );
+}
+
+/* ---------- HERO ---------- */
+
+function Hero() {
+  return (
+    <section id="home" className="relative pt-32 sm:pt-40 pb-20 sm:pb-28 overflow-hidden">
+      {/* animated background lights */}
+      <div className="pointer-events-none absolute inset-0 grid-bg" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[900px] rounded-full opacity-40 blur-3xl"
+           style={{ background: "radial-gradient(circle, oklch(0.66 0.22 285 / 0.5), transparent 60%)" }} />
+      <div className="pointer-events-none absolute top-40 -right-20 size-[500px] rounded-full opacity-30 blur-3xl animate-drift"
+           style={{ background: "radial-gradient(circle, oklch(0.7 0.19 250 / 0.5), transparent 60%)" }} />
+
+      <div className="relative mx-auto max-w-7xl px-4">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={{ show: { transition: { staggerChildren: 0.08 } } }}
+          className="text-center max-w-4xl mx-auto"
+        >
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/10 glass px-3 py-1 text-xs text-muted-foreground">
+            <Sparkles className="size-3.5 text-primary" />
+            AI-first product studio · Now booking Q3
+          </motion.div>
+
+          <motion.h1
+            variants={fadeUp}
+            className="mt-6 text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.05] tracking-tight"
+          >
+            Building <span className="text-gradient">AI, Software</span> &<br className="hidden sm:block" />
+            Digital Experiences That Grow Businesses.
+          </motion.h1>
+
+          <motion.p variants={fadeUp} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            We help startups and businesses build intelligent AI solutions, modern websites,
+            scalable applications, and business automation that deliver measurable results.
+          </motion.p>
+
+          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a href="#contact" className="btn-primary">
+              Start Your Project
+              <ArrowRight className="size-4" />
+            </a>
+            <a href="#portfolio" className="btn-ghost">View Portfolio</a>
+          </motion.div>
+        </motion.div>
+
+        {/* subtle scroll cue */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="mt-20 flex justify-center"
+        >
+          <div className="h-10 w-6 rounded-full border border-white/15 flex items-start justify-center p-1">
+            <motion.div
+              animate={{ y: [0, 14, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              className="h-1.5 w-1.5 rounded-full bg-primary"
+            />
+          </div>
+        </motion.div>
+
+      </div>
+    </section>
+  );
+}
+
+/* ---------- TRUSTED ---------- */
+
+const stats = [
+  { n: 40, s: "+", l: "Projects Completed" },
+  { n: 25, s: "+", l: "Happy Clients" },
+  { n: 15, s: "+", l: "AI Solutions Delivered" },
+  { n: 5, s: "+", l: "Years of Experience" },
+];
+
+const logos = ["Northwind", "Helios", "Kairo", "Lumen", "Meridian", "Orbit", "Vestral", "Sable"];
+
+function Trusted() {
+  return (
+    <section className="py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4">
+        <p className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          Trusted by startups & growing businesses
+        </p>
+
+        <div className="mt-8 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+          <div className="flex gap-14 animate-marquee w-max">
+            {[...logos, ...logos].map((l, i) => (
+              <div key={i} className="text-xl sm:text-2xl font-semibold text-muted-foreground/60 whitespace-nowrap">
+                {l}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {stats.map((st) => (
+            <motion.div
+              key={st.l}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="glass rounded-2xl p-6 text-center"
+            >
+              <div className="text-3xl sm:text-4xl font-bold text-gradient">
+                <Counter to={st.n} suffix={st.s} />
+              </div>
+              <div className="mt-1 text-sm text-muted-foreground">{st.l}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- SERVICES ---------- */
+
+const services = [
+  { icon: Bot, title: "AI Agents", desc: "Autonomous agents that handle research, support, and workflows 24/7." },
+  { icon: Workflow, title: "AI Automation", desc: "Automate repetitive processes with intelligent, self-healing pipelines." },
+  { icon: Globe, title: "Custom Websites", desc: "Marketing sites and product pages engineered to convert." },
+  { icon: Layers, title: "SaaS Development", desc: "Multi-tenant platforms built for scale from day one." },
+  { icon: Smartphone, title: "Mobile Apps", desc: "Native-feeling iOS and Android apps with delightful UX." },
+  { icon: PenTool, title: "UI / UX Design", desc: "Interfaces that look effortless and feel unmistakably premium." },
+  { icon: Sparkles, title: "Branding", desc: "Identity systems that make you instantly recognizable." },
+  { icon: Cloud, title: "Cloud Deployment", desc: "Robust infra on AWS, Vercel, and Cloudflare with zero downtime." },
+];
+
+function Services() {
+  return (
+    <section id="services" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeader
+          eyebrow="Services"
+          title={<>Everything you need to <span className="text-gradient">ship & scale</span>.</>}
+          desc="From first idea to global rollout — one team, one standard of craft."
+        />
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {services.map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.04 }}
+              whileHover={{ y: -6 }}
+              className="group relative glass rounded-2xl p-6 overflow-hidden shine hover-lift"
+            >
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                   style={{ background: "radial-gradient(circle at 30% 0%, oklch(0.66 0.22 285 / 0.18), transparent 60%)" }} />
+              <div className="relative">
+                <div className="inline-grid place-items-center size-10 rounded-xl border border-white/10 bg-white/5 mb-4">
+                  <s.icon className="size-5 text-primary" />
+                </div>
+                <h3 className="text-lg font-semibold">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+                <div className="mt-4 inline-flex items-center gap-1 text-xs text-primary/90 opacity-70 group-hover:opacity-100 transition">
+                  Learn more <ArrowUpRight className="size-3.5" />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- WHY CHOOSE ---------- */
+
+const whys = [
+  "Business-focused solutions",
+  "Scalable architecture",
+  "Fast delivery",
+  "Premium design",
+  "AI-first mindset",
+  "Long-term support",
+];
+
+function WhyChoose() {
+  return (
+    <section className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted-foreground">
+            <span className="size-1.5 rounded-full bg-primary shadow-[0_0_10px] shadow-primary" />
+            Why GenAuk
+          </span>
+          <h2 className="mt-4 text-3xl sm:text-5xl font-bold tracking-tight">
+            A studio that treats your product like <span className="text-gradient">its own</span>.
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            We combine strategic thinking, world-class engineering, and a designer's eye —
+            so every screen, endpoint, and interaction earns its place.
+          </p>
+
+          <ul className="mt-8 grid sm:grid-cols-2 gap-3">
+            {whys.map((w) => (
+              <li key={w} className="flex items-center gap-3 glass rounded-xl px-4 py-3">
+                <span className="inline-grid place-items-center size-6 rounded-full bg-primary/15 text-primary">
+                  <Check className="size-3.5" />
+                </span>
+                <span className="text-sm">{w}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative"
+        >
+          <div className="relative aspect-square rounded-3xl overflow-hidden glass-strong">
+            <img src={heroImg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-70 animate-floaty" loading="lazy" width={1280} height={1280} />
+            <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 glass rounded-2xl p-4">
+              <div className="text-xs text-muted-foreground">Uptime last 90 days</div>
+              <div className="mt-1 flex items-end justify-between">
+                <div className="text-3xl font-bold text-gradient">99.99%</div>
+                <div className="flex gap-1">
+                  {Array.from({ length: 24 }).map((_, i) => (
+                    <div key={i} className="w-1 rounded-full bg-primary/70" style={{ height: `${8 + Math.random() * 24}px` }} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- PROCESS ---------- */
+
+const steps = [
+  { icon: Search, title: "Discovery", desc: "Understand goals, users, and constraints." },
+  { icon: Target, title: "Strategy", desc: "Roadmap, KPIs, and technical architecture." },
+  { icon: Palette, title: "Design", desc: "Systemised UI with taste and precision." },
+  { icon: Code2, title: "Development", desc: "Modern stack, clean code, fast iteration." },
+  { icon: ShieldCheck, title: "Testing", desc: "QA, performance, security & accessibility." },
+  { icon: Rocket, title: "Launch", desc: "Ship confidently with zero-downtime deploys." },
+  { icon: LifeBuoy, title: "Support", desc: "Ongoing improvements & partnership." },
+];
+
+function Process() {
+  return (
+    <section id="process" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeader
+          eyebrow="Process"
+          title={<>A calm, deliberate <span className="text-gradient">workflow</span>.</>}
+          desc="Seven steps, one obsession — shipping work you're proud to show."
+        />
+
+        <div className="relative">
+          <div className="hidden lg:block absolute top-10 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                className="relative glass rounded-2xl p-4 text-center"
+              >
+                <div className="mx-auto inline-grid place-items-center size-10 rounded-xl bg-gradient-to-br from-primary/30 to-transparent border border-primary/20 relative z-10">
+                  <s.icon className="size-5 text-primary" />
+                </div>
+                <div className="mt-3 text-xs text-muted-foreground">Step {i + 1}</div>
+                <div className="text-sm font-semibold">{s.title}</div>
+                <p className="mt-1 text-xs text-muted-foreground">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- PORTFOLIO ---------- */
+
+function Portfolio() {
+  return (
+    <section id="portfolio" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeader
+          eyebrow="Selected Work"
+          title={<>Products people <span className="text-gradient">actually use</span>.</>}
+          desc="A snapshot of the work we've shipped. More case studies coming soon."
+        />
+
+        <div className="grid lg:grid-cols-2 gap-6">
+          {/* Featured Vadapav project */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group relative glass-strong rounded-3xl overflow-hidden lg:col-span-2"
+          >
+            <div className="grid md:grid-cols-2 gap-0">
+              <div className="relative aspect-[4/3] md:aspect-auto overflow-hidden">
+                <img
+                  src={vadapavImg}
+                  alt="Aai Vadapav — modern restaurant website"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-background/80 via-background/10 to-transparent" />
+              </div>
+              <div className="p-8 sm:p-10 flex flex-col">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">Featured</span>
+                  <span>Restaurant Website</span>
+                </div>
+                <h3 className="mt-4 text-3xl font-bold tracking-tight">Aai Vadapav</h3>
+                <p className="mt-3 text-muted-foreground">
+                  A modern website built for a local Vadapav shop featuring online ordering,
+                  digital menu, responsive design, and delivery support.
+                </p>
+
+                <ul className="mt-5 grid grid-cols-2 gap-2 text-sm">
+                  {["Online Ordering", "Delivery Support", "Responsive Design", "Food Showcase"].map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-muted-foreground">
+                      <Check className="size-3.5 text-primary" /> {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {["React", "Vite", "Tailwind CSS"].map((t) => (
+                    <span key={t} className="text-xs rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-muted-foreground">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a
+                    href="https://aai-vada-pav.vercel.app/"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="btn-primary text-xs"
+                  >
+                    Visit Website <ExternalLink className="size-3.5" />
+                  </a>
+                  <a href="#contact" className="btn-ghost text-xs">
+                    View Case Study
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.article>
+
+          {/* Placeholders */}
+          {[1, 2].map((i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass rounded-3xl p-10 min-h-[300px] flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">Coming soon</span>
+                </div>
+                <h3 className="mt-4 text-2xl font-semibold">Case Study #{i + 1}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  We're preparing a detailed write-up of our latest launch. Stay tuned.
+                </p>
+              </div>
+              <div className="flex gap-2 mt-6">
+                {["AI", "SaaS", "Design"].map((t) => (
+                  <span key={t} className="text-xs rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-muted-foreground">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- TECH STACK ---------- */
+
+const stack: { name: string; slug: string }[] = [
+  { name: "React", slug: "react" },
+  { name: "Next.js", slug: "nextdotjs" },
+  { name: "Node.js", slug: "nodedotjs" },
+  { name: "Express", slug: "express" },
+  { name: "Python", slug: "python" },
+  { name: "FastAPI", slug: "fastapi" },
+  { name: "Flutter", slug: "flutter" },
+  { name: "Firebase", slug: "firebase" },
+  { name: "Supabase", slug: "supabase" },
+  { name: "MongoDB", slug: "mongodb" },
+  { name: "PostgreSQL", slug: "postgresql" },
+  { name: "Docker", slug: "docker" },
+  { name: "AWS", slug: "amazonwebservices" },
+  { name: "OpenAI", slug: "openai" },
+  { name: "Anthropic", slug: "anthropic" },
+  { name: "LangChain", slug: "langchain" },
+  { name: "n8n", slug: "n8n" },
+  { name: "Vercel", slug: "vercel" },
+  { name: "Render", slug: "render" },
+  { name: "GitHub", slug: "github" },
+  { name: "Tailwind CSS", slug: "tailwindcss" },
+  { name: "Framer Motion", slug: "framer" },
+];
+
+function TechStack() {
+  return (
+    <section className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeader
+          eyebrow="Technologies"
+          title={<>Best-in-class <span className="text-gradient">tools</span>, chosen with intent.</>}
+          desc="A curated stack we know deeply — no framework-of-the-week gambles."
+        />
+
+        <div className="flex flex-wrap gap-3 sm:gap-4 justify-center max-w-4xl mx-auto mt-4">
+          {stack.map((t, i) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.025 }}
+              whileHover={{ y: -4, scale: 1.1 }}
+              title={t.name}
+              aria-label={t.name}
+              className="group relative grid place-items-center size-16 sm:size-20 glass rounded-2xl hover:border-primary/50 transition-colors cursor-default"
+            >
+              <img
+                src={`https://cdn.simpleicons.org/${t.slug}`}
+                alt={t.name}
+                loading="lazy"
+                className="size-8 sm:size-10 opacity-80 group-hover:opacity-100 transition-opacity"
+                style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.3))" }}
+              />
+              <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                {t.name}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+/* ---------- TESTIMONIALS ---------- */
+
+const testimonials = [
+  {
+    name: "Aarav Mehta",
+    role: "Founder, Northwind Labs",
+    quote: "GenAuk delivered our AI platform in weeks, not months. The attention to detail is unmatched.",
+  },
+  {
+    name: "Sara Iyer",
+    role: "Product Lead, Helios",
+    quote: "It's rare to find a team that pairs great taste with real engineering depth. GenAuk does both.",
+  },
+  {
+    name: "Rohan Kapoor",
+    role: "CEO, Kairo",
+    quote: "They shipped an experience our users genuinely love. Conversions jumped 38% in the first month.",
+  },
+];
+
+function Testimonials() {
+  return (
+    <section className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeader
+          eyebrow="Testimonials"
+          title={<>Kind words from <span className="text-gradient">real partners</span>.</>}
+        />
+
+        <div className="grid md:grid-cols-3 gap-4">
+          {testimonials.map((t, i) => (
+            <motion.figure
+              key={t.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="glass rounded-2xl p-6"
+            >
+              <div className="flex gap-0.5 text-primary">
+                {Array.from({ length: 5 }).map((_, k) => (
+                  <Star key={k} className="size-4 fill-current" />
+                ))}
+              </div>
+              <blockquote className="mt-4 text-sm leading-relaxed">"{t.quote}"</blockquote>
+              <figcaption className="mt-6 flex items-center gap-3">
+                <div className="size-9 rounded-full bg-gradient-to-br from-primary to-brand-2" />
+                <div>
+                  <div className="text-sm font-medium">{t.name}</div>
+                  <div className="text-xs text-muted-foreground">{t.role}</div>
+                </div>
+              </figcaption>
+            </motion.figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- FAQ ---------- */
+
+const faqs = [
+  { q: "What services do you offer?", a: "AI agents & automation, custom web and SaaS development, mobile apps, UI/UX, branding, and cloud deployment — end-to-end." },
+  { q: "How long does development take?", a: "Most launches happen in 4–10 weeks depending on scope. We share a clear timeline after discovery." },
+  { q: "Can you build AI solutions?", a: "Yes — from focused agents and RAG pipelines to full AI-powered products using OpenAI, Anthropic, and open-source models." },
+  { q: "Do you provide support?", a: "Absolutely. We offer flexible retainers for ongoing improvements, monitoring, and new feature work." },
+  { q: "Do you work with startups?", a: "It's most of what we do. We're comfortable moving fast with founders and iterating alongside product-market fit." },
+];
+
+function FAQ() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section className="py-24 sm:py-32">
+      <div className="mx-auto max-w-3xl px-4">
+        <SectionHeader
+          eyebrow="FAQ"
+          title={<>Frequently asked <span className="text-gradient">questions</span>.</>}
+        />
+        <div className="space-y-3">
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={f.q} className="glass rounded-2xl overflow-hidden">
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between text-left px-5 py-4"
+                >
+                  <span className="text-sm sm:text-base font-medium">{f.q}</span>
+                  <span className="ml-4 inline-grid place-items-center size-7 rounded-full border border-white/10 bg-white/5">
+                    {isOpen ? <Minus className="size-3.5" /> : <Plus className="size-3.5" />}
+                  </span>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <p className="px-5 pb-5 text-sm text-muted-foreground">{f.a}</p>
+                </motion.div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- ABOUT ---------- */
+
+function About() {
+  return (
+    <section id="about" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-4xl px-4 text-center">
+        <SectionHeader
+          eyebrow="About GenAuk"
+          title={<>A small team, obsessed with <span className="text-gradient">craft</span>.</>}
+        />
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-lg text-muted-foreground leading-relaxed"
+        >
+          GenAuk is a modern software and AI studio built on a simple belief: technology should
+          quietly solve real problems and feel effortless to use. We partner with founders and
+          teams who care about the details — pairing strategic thinking, AI expertise, and
+          engineering discipline to ship products that move the business.
+        </motion.p>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-2 text-xs text-muted-foreground">
+          {["Innovation", "AI", "Technology", "Quality", "Business Growth", "Problem Solving"].map((t) => (
+            <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- CTA ---------- */
+
+function CTA() {
+  return (
+    <section id="contact" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-5xl px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative overflow-hidden rounded-3xl glass-strong p-10 sm:p-16 text-center"
+        >
+          <div className="absolute inset-0 opacity-70"
+               style={{ background: "radial-gradient(ellipse at center, oklch(0.66 0.22 285 / 0.35), transparent 60%)" }} />
+          <div className="relative">
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
+              Let's build something <span className="text-gradient">incredible</span> together.
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+              Tell us what you're building. We'll reply within one business day with next steps.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <a href="mailto:hello@genauk.com" className="btn-primary">
+                Book a Consultation <ArrowRight className="size-4" />
+              </a>
+              <a href="mailto:hello@genauk.com?subject=Quote%20request" className="btn-ghost">Get a Quote</a>
+            </div>
+
+            <div className="mt-10 grid sm:grid-cols-3 gap-3 text-sm text-muted-foreground">
+              <div className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center">
+                <Mail className="size-4 text-primary" /> hello@genauk.com
+              </div>
+              <div className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center">
+                <Phone className="size-4 text-primary" /> +91 000 000 0000
+              </div>
+              <div className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center">
+                <MapPin className="size-4 text-primary" /> Remote · Worldwide
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- FOOTER ---------- */
+
+const LOGO_URL = "/genauk-logo.png";
+
+function Footer() {
+  return (
+    <footer className="border-t border-white/5 pt-16 pb-10">
+      <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-4 gap-10">
+        <div className="md:col-span-1">
+          <a href="#home" className="flex items-center gap-2">
+            <img src={LOGO_URL} alt="GenAuk" className="h-8 w-8 rounded-lg bg-white p-0.5" width={32} height={32} />
+            <span className="font-semibold">GenAuk</span>
+          </a>
+          <p className="mt-3 text-sm text-muted-foreground max-w-xs">
+            AI, software, and digital experiences engineered for growth.
+          </p>
+          <div className="mt-5 flex gap-2">
+            {[Twitter, Linkedin, Github].map((Icon, i) => (
+              <a key={i} href="#" className="inline-grid place-items-center size-9 rounded-full glass hover:border-primary/40 transition-colors">
+                <Icon className="size-4" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <FooterCol title="Quick Links" items={[
+          { l: "Home", href: "#home" },
+          { l: "About", href: "#about" },
+          { l: "Process", href: "#process" },
+          { l: "Contact", href: "#contact" },
+        ]} />
+        <FooterCol title="Services" items={[
+          { l: "AI Agents", href: "#services" },
+          { l: "AI Automation", href: "#services" },
+          { l: "Web Development", href: "#services" },
+          { l: "SaaS Development", href: "#services" },
+          { l: "Mobile Apps", href: "#services" },
+        ]} />
+        <FooterCol title="Portfolio" items={[
+          { l: "Aai Vadapav", href: "https://aai-vada-pav.vercel.app/" },
+          { l: "All Projects", href: "#portfolio" },
+        ]} />
+      </div>
+
+      <div className="mt-12 border-t border-white/5 pt-6 mx-auto max-w-7xl px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+        <div>© {new Date().getFullYear()} GenAuk. All rights reserved.</div>
+        <div>Crafted with intent. Deployed with care.</div>
+      </div>
+    </footer>
+  );
+}
+
+function FooterCol({ title, items }: { title: string; items: { l: string; href: string }[] }) {
+  return (
+    <div>
+      <div className="text-sm font-semibold">{title}</div>
+      <ul className="mt-4 space-y-2">
+        {items.map((it) => (
+          <li key={it.l}>
+            <a href={it.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              {it.l}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/* ---------- PAGE ---------- */
+
+export default function App() {
+  return (
+    <div className="min-h-screen relative">
+      {/* animated aurora background */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div
+          className="absolute -top-40 -left-40 size-[700px] rounded-full blur-3xl animate-aurora"
+          style={{ background: "radial-gradient(circle, var(--aurora-1), transparent 60%)" }}
+        />
+        <div
+          className="absolute top-1/3 -right-40 size-[600px] rounded-full blur-3xl animate-aurora"
+          style={{ background: "radial-gradient(circle, var(--aurora-2), transparent 60%)", animationDelay: "-6s" }}
+        />
+        <div
+          className="absolute bottom-0 left-1/3 size-[500px] rounded-full blur-3xl animate-aurora"
+          style={{ background: "radial-gradient(circle, var(--aurora-3), transparent 60%)", animationDelay: "-12s" }}
+        />
+      </div>
+
+      <Navbar />
+      <main>
+        <Hero />
+        <Trusted />
+        <Services />
+        <WhyChoose />
+        <Process />
+        <Portfolio />
+        <TechStack />
+        <Testimonials />
+        <FAQ />
+        <About />
+        <CTA />
+      </main>
+      <Footer />
+    </div>
+  );
+}
