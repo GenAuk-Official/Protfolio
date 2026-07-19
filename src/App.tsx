@@ -363,7 +363,7 @@ function Portfolio() {
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">Coming soon</span>
                 </div>
-                <h3 className="mt-4 text-2xl font-semibold">Case Study #{i + 1}</h3>
+                <h3 className="mt-4 text-2xl font-semibold">Project #{i + 1}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   We're preparing a detailed write-up of our latest launch. Stay tuned.
                 </p>
