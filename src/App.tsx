@@ -19,8 +19,7 @@ import {
   Rocket,
   LifeBuoy,
   Star,
-  Plus,
-  Minus,
+
   Mail,
   Phone,
   MapPin,
@@ -29,7 +28,6 @@ import {
   Linkedin,
   ExternalLink,
 } from "lucide-react";
-import { useState } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Counter } from "@/components/site/Counter";
 import vadapavImg from "@/assets/project-vadapav.jpg";
@@ -78,9 +76,9 @@ function Hero() {
       {/* animated background lights */}
       <div className="pointer-events-none absolute inset-0 grid-bg" />
       <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[900px] rounded-full opacity-40 blur-3xl"
-           style={{ background: "radial-gradient(circle, oklch(0.66 0.22 285 / 0.5), transparent 60%)" }} />
+        style={{ background: "radial-gradient(circle, oklch(0.66 0.22 285 / 0.5), transparent 60%)" }} />
       <div className="pointer-events-none absolute top-40 -right-20 size-[500px] rounded-full opacity-30 blur-3xl animate-drift"
-           style={{ background: "radial-gradient(circle, oklch(0.7 0.19 250 / 0.5), transparent 60%)" }} />
+        style={{ background: "radial-gradient(circle, oklch(0.7 0.19 250 / 0.5), transparent 60%)" }} />
 
       <div className="relative mx-auto max-w-7xl px-4">
         <motion.div
@@ -205,7 +203,7 @@ function Services() {
               className="group relative glass rounded-2xl p-6 overflow-hidden shine hover-lift"
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                   style={{ background: "radial-gradient(circle at 30% 0%, oklch(0.66 0.22 285 / 0.18), transparent 60%)" }} />
+                style={{ background: "radial-gradient(circle at 30% 0%, oklch(0.66 0.22 285 / 0.18), transparent 60%)" }} />
               <div className="relative">
                 <div className="inline-grid place-items-center size-10 rounded-xl border border-white/10 bg-white/5 mb-4">
                   <s.icon className="size-5 text-primary" />
@@ -387,29 +385,29 @@ function Portfolio() {
 
 /* ---------- TECH STACK ---------- */
 
-const stack: { name: string; slug: string }[] = [
-  { name: "React", slug: "react" },
-  { name: "Next.js", slug: "nextdotjs" },
-  { name: "Node.js", slug: "nodedotjs" },
-  { name: "Express", slug: "express" },
-  { name: "Python", slug: "python" },
-  { name: "FastAPI", slug: "fastapi" },
-  { name: "Flutter", slug: "flutter" },
-  { name: "Firebase", slug: "firebase" },
-  { name: "Supabase", slug: "supabase" },
-  { name: "MongoDB", slug: "mongodb" },
-  { name: "PostgreSQL", slug: "postgresql" },
-  { name: "Docker", slug: "docker" },
-  { name: "AWS", slug: "amazonwebservices" },
-  { name: "OpenAI", slug: "openai" },
-  { name: "Anthropic", slug: "anthropic" },
-  { name: "LangChain", slug: "langchain" },
-  { name: "n8n", slug: "n8n" },
-  { name: "Vercel", slug: "vercel" },
-  { name: "Render", slug: "render" },
-  { name: "GitHub", slug: "github" },
-  { name: "Tailwind CSS", slug: "tailwindcss" },
-  { name: "Framer Motion", slug: "framer" },
+const stack: { name: string; slug: string; color: string; invertDark?: boolean }[] = [
+  { name: "React", slug: "react", color: "61DAFB" },
+  { name: "Next.js", slug: "nextdotjs", color: "000000", invertDark: true },
+  { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
+  { name: "Express", slug: "express", color: "000000", invertDark: true },
+  { name: "Python", slug: "python", color: "3776AB" },
+  { name: "FastAPI", slug: "fastapi", color: "009688" },
+  { name: "Flutter", slug: "flutter", color: "02569B" },
+  { name: "Firebase", slug: "firebase", color: "FFCA28" },
+  { name: "Supabase", slug: "supabase", color: "3FCF8E" },
+  { name: "MongoDB", slug: "mongodb", color: "47A248" },
+  { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
+  { name: "Docker", slug: "docker", color: "2496ED" },
+  { name: "AWS", slug: "amazonwebservices", color: "FF9900" },
+  { name: "OpenAI", slug: "openai", color: "412991" },
+  { name: "Anthropic", slug: "anthropic", color: "191919", invertDark: true },
+  { name: "LangChain", slug: "langchain", color: "1C3C3C", invertDark: true },
+  { name: "n8n", slug: "n8n", color: "EA4B71" },
+  { name: "Vercel", slug: "vercel", color: "000000", invertDark: true },
+  { name: "Render", slug: "render", color: "46E3B7" },
+  { name: "GitHub", slug: "github", color: "181717", invertDark: true },
+  { name: "Tailwind CSS", slug: "tailwindcss", color: "06B6D4" },
+  { name: "Framer Motion", slug: "framer", color: "0055FF" },
 ];
 
 function TechStack() {
@@ -436,11 +434,10 @@ function TechStack() {
               className="group relative grid place-items-center size-16 sm:size-20 glass rounded-2xl hover:border-primary/50 transition-colors cursor-default"
             >
               <img
-                src={`https://cdn.simpleicons.org/${t.slug}`}
+                src={`https://cdn.simpleicons.org/${t.slug}/${t.color}`}
                 alt={t.name}
                 loading="lazy"
-                className="size-8 sm:size-10 opacity-80 group-hover:opacity-100 transition-opacity"
-                style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.3))" }}
+                className={`size-8 sm:size-10 transition-opacity opacity-90 group-hover:opacity-100${t.invertDark ? " dark:invert" : ""}`}
               />
               <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 {t.name}
@@ -514,55 +511,7 @@ function Testimonials() {
   );
 }
 
-/* ---------- FAQ ---------- */
 
-const faqs = [
-  { q: "What services do you offer?", a: "AI agents & automation, custom web and SaaS development, mobile apps, UI/UX, branding, and cloud deployment — end-to-end." },
-  { q: "How long does development take?", a: "Most launches happen in 4–10 weeks depending on scope. We share a clear timeline after discovery." },
-  { q: "Can you build AI solutions?", a: "Yes — from focused agents and RAG pipelines to full AI-powered products using OpenAI, Anthropic, and open-source models." },
-  { q: "Do you provide support?", a: "Absolutely. We offer flexible retainers for ongoing improvements, monitoring, and new feature work." },
-  { q: "Do you work with startups?", a: "It's most of what we do. We're comfortable moving fast with founders and iterating alongside product-market fit." },
-];
-
-function FAQ() {
-  const [open, setOpen] = useState<number | null>(0);
-  return (
-    <section className="py-14 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
-        <SectionHeader
-          eyebrow="FAQ"
-          title={<>Frequently asked <span className="text-gradient">questions</span>.</>}
-        />
-        <div className="space-y-3">
-          {faqs.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={f.q} className="glass rounded-2xl overflow-hidden">
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between text-left px-5 py-4"
-                >
-                  <span className="text-sm sm:text-base font-medium">{f.q}</span>
-                  <span className="ml-4 inline-grid place-items-center size-7 rounded-full border border-white/10 bg-white/5">
-                    {isOpen ? <Minus className="size-3.5" /> : <Plus className="size-3.5" />}
-                  </span>
-                </button>
-                <motion.div
-                  initial={false}
-                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                  <p className="px-5 pb-5 text-sm text-muted-foreground">{f.a}</p>
-                </motion.div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ---------- ABOUT ---------- */
 
@@ -619,7 +568,7 @@ function CTA() {
           className="relative overflow-hidden rounded-3xl glass-strong p-8 sm:p-12 text-center"
         >
           <div className="absolute inset-0 opacity-70"
-               style={{ background: "radial-gradient(ellipse at center, oklch(0.66 0.22 285 / 0.35), transparent 60%)" }} />
+            style={{ background: "radial-gradient(ellipse at center, oklch(0.66 0.22 285 / 0.35), transparent 60%)" }} />
           <div className="relative">
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
               Let's build something <span className="text-gradient">incredible</span> together.
@@ -642,7 +591,7 @@ function CTA() {
                 <Phone className="size-4 text-primary" /> +91 82088 54485
               </a>
               <div className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center">
-                <MapPin className="size-4 text-primary" /> Remote · Worldwide
+                <MapPin className="size-4 text-primary" /> Mumbai · India
               </div>
             </div>
           </div>
@@ -752,7 +701,6 @@ export default function App() {
         <Portfolio />
         <TechStack />
         <Testimonials />
-        <FAQ />
         <About />
         <CTA />
       </main>
