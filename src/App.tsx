@@ -127,14 +127,14 @@ const stats = [
   { n: 1, s: "+", l: "Years of Experience" },
 ];
 
-const logos = ["Aai Vada Pav", "Helios", "Kairo", "Lumen", "Meridian", "Orbit", "Vestral", "Sable"];
+const logos = ["Aai Vada Pav", "Your Business", "More Projects Coming Soon"];
 
 function Trusted() {
   return (
     <section className="py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4">
         <p className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Trusted by startups & growing businesses
+          Building for startups & growing businesses
         </p>
 
         <div className="mt-6 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
