@@ -121,13 +121,13 @@ function Hero() {
 /* ---------- TRUSTED ---------- */
 
 const stats = [
-  { n: 40, s: "+", l: "Projects Completed" },
-  { n: 25, s: "+", l: "Happy Clients" },
-  { n: 15, s: "+", l: "AI Solutions Delivered" },
-  { n: 5, s: "+", l: "Years of Experience" },
+  { n: 1, l: "Projects Completed" },
+  { n: 1, l: "Happy Clients" },
+  { n: 1, l: "AI Solutions Delivered" },
+  { n: 1, s: "+", l: "Years of Experience" },
 ];
 
-const logos = ["Northwind", "Helios", "Kairo", "Lumen", "Meridian", "Orbit", "Vestral", "Sable"];
+const logos = ["Aai Vada Pav", "Helios", "Kairo", "Lumen", "Meridian", "Orbit", "Vestral", "Sable"];
 
 function Trusted() {
   return (
@@ -171,7 +171,7 @@ function Trusted() {
 /* ---------- SERVICES ---------- */
 
 const services = [
-  { icon: Bot, title: "AI Agents", desc: "Autonomous agents that handle research, support, and workflows 24/7." },
+  { icon: Bot, title: "AI Chatbots & Agents", desc: "Autonomous agents that handle research, support, and workflows 24/7." },
   { icon: Workflow, title: "AI Automation", desc: "Automate repetitive processes with intelligent, self-healing pipelines." },
   { icon: Globe, title: "Custom Websites", desc: "Marketing sites and product pages engineered to convert." },
   { icon: Layers, title: "SaaS Development", desc: "Multi-tenant platforms built for scale from day one." },
@@ -281,7 +281,7 @@ function Portfolio() {
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Selected Work"
-          title={<>Products people <span className="text-gradient">actually use</span>.</>}
+          title={<>Projects we've <span className="text-gradient">built.</span>.</>}
           desc="A snapshot of the work we've shipped. More case studies coming soon."
         />
 
@@ -308,16 +308,16 @@ function Portfolio() {
               <div className="p-8 sm:p-10 flex flex-col">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">Featured</span>
-                  <span>Restaurant Website</span>
+                  <span>Shop Website</span>
                 </div>
                 <h3 className="mt-4 text-3xl font-bold tracking-tight">Aai Vadapav</h3>
                 <p className="mt-3 text-muted-foreground">
                   A modern website built for a local Vadapav shop featuring online ordering,
-                  digital menu, responsive design, and delivery support.
+                  digital menu, responsive design, delivery support and chatbot integration.
                 </p>
 
                 <ul className="mt-5 grid grid-cols-2 gap-2 text-sm">
-                  {["Online Ordering", "Delivery Support", "Responsive Design", "Food Showcase"].map((f) => (
+                  {["Online Ordering", "Delivery Support", "Responsive Design", "24/7 Chatbot Support"].map((f) => (
                     <li key={f} className="flex items-center gap-2 text-muted-foreground">
                       <Check className="size-3.5 text-primary" /> {f}
                     </li>
@@ -325,7 +325,7 @@ function Portfolio() {
                 </ul>
 
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {["React", "Vite", "Tailwind CSS"].map((t) => (
+                  {["React", "Node", "Langchain", "Mongodb", "Vercel"].map((t) => (
                     <span key={t} className="text-xs rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-muted-foreground">
                       {t}
                     </span>
@@ -455,19 +455,9 @@ function TechStack() {
 
 const testimonials = [
   {
-    name: "Aarav Mehta",
-    role: "Founder, Northwind Labs",
-    quote: "GenAuk delivered our AI platform in weeks, not months. The attention to detail is unmatched.",
-  },
-  {
-    name: "Sara Iyer",
-    role: "Product Lead, Helios",
-    quote: "It's rare to find a team that pairs great taste with real engineering depth. GenAuk does both.",
-  },
-  {
-    name: "Rohan Kapoor",
-    role: "CEO, Kairo",
-    quote: "They shipped an experience our users genuinely love. Conversions jumped 38% in the first month.",
+    name: "Suresh Mhaske",
+    role: "Owner, Aai Vada Pav",
+    quote: "GenAuk delivered our AI platform in weeks, not months. But gave things more than I expected",
   },
 ];
 
@@ -537,10 +527,7 @@ function About() {
           viewport={{ once: true }}
           className="text-lg text-muted-foreground leading-relaxed"
         >
-          GenAuk is a modern software and AI studio built on a simple belief: technology should
-          quietly solve real problems and feel effortless to use. We partner with founders and
-          teams who care about the details — pairing strategic thinking, AI expertise, and
-          engineering discipline to ship products that move the business.
+          GenAuk is an AI-focused software studio that builds practical AI solutions, modern web applications, and business automation tools. We believe technology should solve real business problems—not add complexity. Every project is built with clean engineering, thoughtful design, and a focus on long-term value.
         </motion.p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-2 text-xs text-muted-foreground">
@@ -615,7 +602,7 @@ function Footer() {
             <span className="font-semibold">GenAuk</span>
           </a>
           <p className="mt-3 text-sm text-muted-foreground max-w-xs">
-            AI, software, and digital experiences engineered for growth.
+            Building practical AI solutions, modern software, and business websites.
           </p>
           <div className="mt-5 flex gap-2">
             {[Twitter, Linkedin, Github].map((Icon, i) => (
