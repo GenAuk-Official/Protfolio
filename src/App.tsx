@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import project from "./data/project";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -431,7 +432,7 @@ function Portfolio() {
             </div>
           </motion.article>
 
-          <ProjectComingSoon projectName="SJCEM CANTEEN" />
+          <ProjectComingSoon {...project} />
         </div>
       </div>
     </section>
