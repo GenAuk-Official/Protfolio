@@ -19,7 +19,6 @@ import {
   Rocket,
   LifeBuoy,
   Star,
-
   Mail,
   Phone,
   MapPin,
@@ -31,6 +30,7 @@ import {
 import { Navbar } from "@/components/site/Navbar";
 import { Counter } from "@/components/site/Counter";
 import vadapavImg from "@/assets/project-vadapav.jpg";
+import ProjectComingSoon from "./components/site/ProjectComingSoon";
 
 /* ---------- shared bits ---------- */
 
@@ -75,10 +75,18 @@ function Hero() {
     <section id="home" className="relative pt-28 sm:pt-36 pb-14 sm:pb-20 overflow-hidden">
       {/* animated background lights */}
       <div className="pointer-events-none absolute inset-0 grid-bg" />
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[900px] rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(circle, oklch(0.66 0.22 285 / 0.5), transparent 60%)" }} />
-      <div className="pointer-events-none absolute top-40 -right-20 size-[500px] rounded-full opacity-30 blur-3xl animate-drift"
-        style={{ background: "radial-gradient(circle, oklch(0.7 0.19 250 / 0.5), transparent 60%)" }} />
+      <div
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[900px] rounded-full opacity-40 blur-3xl"
+        style={{
+          background: "radial-gradient(circle, oklch(0.66 0.22 285 / 0.5), transparent 60%)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute top-40 -right-20 size-[500px] rounded-full opacity-30 blur-3xl animate-drift"
+        style={{
+          background: "radial-gradient(circle, oklch(0.7 0.19 250 / 0.5), transparent 60%)",
+        }}
+      />
 
       <div className="relative mx-auto max-w-7xl px-4">
         <motion.div
@@ -87,7 +95,10 @@ function Hero() {
           variants={{ show: { transition: { staggerChildren: 0.08 } } }}
           className="text-center max-w-4xl mx-auto"
         >
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/10 glass px-3 py-1 text-xs text-muted-foreground">
+          <motion.div
+            variants={fadeUp}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 glass px-3 py-1 text-xs text-muted-foreground"
+          >
             <Sparkles className="size-3.5 text-primary" />
             AI-first product studio · Now booking Q3
           </motion.div>
@@ -96,21 +107,30 @@ function Hero() {
             variants={fadeUp}
             className="mt-6 text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.05] tracking-tight"
           >
-            Building <span className="text-gradient">AI, Software</span> &<br className="hidden sm:block" />
+            Building <span className="text-gradient">AI, Software</span> &
+            <br className="hidden sm:block" />
             Digital Experiences That Grow Businesses.
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto"
+          >
             We help startups and businesses build intelligent AI solutions, modern websites,
             scalable applications, and business automation that deliver measurable results.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <motion.div
+            variants={fadeUp}
+            className="mt-8 flex flex-wrap items-center justify-center gap-3"
+          >
             <a href="#contact" className="btn-primary">
               Start Your Project
               <ArrowRight className="size-4" />
             </a>
-            <a href="#portfolio" className="btn-ghost">View Portfolio</a>
+            <a href="#portfolio" className="btn-ghost">
+              View Portfolio
+            </a>
           </motion.div>
         </motion.div>
       </div>
@@ -140,7 +160,10 @@ function Trusted() {
         <div className="mt-6 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
           <div className="flex gap-14 animate-marquee w-max">
             {[...logos, ...logos].map((l, i) => (
-              <div key={i} className="text-xl sm:text-2xl font-semibold text-muted-foreground/60 whitespace-nowrap">
+              <div
+                key={i}
+                className="text-xl sm:text-2xl font-semibold text-muted-foreground/60 whitespace-nowrap"
+              >
                 {l}
               </div>
             ))}
@@ -171,14 +194,46 @@ function Trusted() {
 /* ---------- SERVICES ---------- */
 
 const services = [
-  { icon: Bot, title: "AI Chatbots & Agents", desc: "Autonomous agents that handle research, support, and workflows 24/7." },
-  { icon: Workflow, title: "AI Automation", desc: "Automate repetitive processes with intelligent, self-healing pipelines." },
-  { icon: Globe, title: "Custom Websites", desc: "Marketing sites and product pages engineered to convert." },
-  { icon: Layers, title: "SaaS Development", desc: "Multi-tenant platforms built for scale from day one." },
-  { icon: Smartphone, title: "Mobile Apps", desc: "Native-feeling iOS and Android apps with delightful UX." },
-  { icon: PenTool, title: "UI / UX Design", desc: "Interfaces that look effortless and feel unmistakably premium." },
-  { icon: Sparkles, title: "Branding", desc: "Identity systems that make you instantly recognizable." },
-  { icon: Cloud, title: "Cloud Deployment", desc: "Robust infra on AWS, Vercel, and Cloudflare with zero downtime." },
+  {
+    icon: Bot,
+    title: "AI Chatbots & Agents",
+    desc: "Autonomous agents that handle research, support, and workflows 24/7.",
+  },
+  {
+    icon: Workflow,
+    title: "AI Automation",
+    desc: "Automate repetitive processes with intelligent, self-healing pipelines.",
+  },
+  {
+    icon: Globe,
+    title: "Custom Websites",
+    desc: "Marketing sites and product pages engineered to convert.",
+  },
+  {
+    icon: Layers,
+    title: "SaaS Development",
+    desc: "Multi-tenant platforms built for scale from day one.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Apps",
+    desc: "Native-feeling iOS and Android apps with delightful UX.",
+  },
+  {
+    icon: PenTool,
+    title: "UI / UX Design",
+    desc: "Interfaces that look effortless and feel unmistakably premium.",
+  },
+  {
+    icon: Sparkles,
+    title: "Branding",
+    desc: "Identity systems that make you instantly recognizable.",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud Deployment",
+    desc: "Robust infra on AWS, Vercel, and Cloudflare with zero downtime.",
+  },
 ];
 
 function Services() {
@@ -187,7 +242,11 @@ function Services() {
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Services"
-          title={<>Everything you need to <span className="text-gradient">ship & scale</span>.</>}
+          title={
+            <>
+              Everything you need to <span className="text-gradient">ship & scale</span>.
+            </>
+          }
           desc="From first idea to global rollout — one team, one standard of craft."
         />
 
@@ -202,8 +261,13 @@ function Services() {
               whileHover={{ y: -6 }}
               className="group relative glass rounded-2xl p-6 overflow-hidden shine hover-lift"
             >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: "radial-gradient(circle at 30% 0%, oklch(0.66 0.22 285 / 0.18), transparent 60%)" }} />
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background:
+                    "radial-gradient(circle at 30% 0%, oklch(0.66 0.22 285 / 0.18), transparent 60%)",
+                }}
+              />
               <div className="relative">
                 <div className="inline-grid place-items-center size-10 rounded-xl border border-white/10 bg-white/5 mb-4">
                   <s.icon className="size-5 text-primary" />
@@ -242,7 +306,11 @@ function Process() {
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Process"
-          title={<>A calm, deliberate <span className="text-gradient">workflow</span>.</>}
+          title={
+            <>
+              A calm, deliberate <span className="text-gradient">workflow</span>.
+            </>
+          }
           desc="Seven steps, one obsession — shipping work you're proud to show."
         />
 
@@ -281,11 +349,15 @@ function Portfolio() {
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Selected Work"
-          title={<>Projects we've <span className="text-gradient">built.</span>.</>}
+          title={
+            <>
+              Projects we've <span className="text-gradient">built.</span>.
+            </>
+          }
           desc="A snapshot of the work we've shipped. More case studies coming soon."
         />
 
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid  gap-6">
           {/* Featured Vadapav project */}
           <motion.article
             initial={{ opacity: 0, y: 30 }}
@@ -307,17 +379,24 @@ function Portfolio() {
               </div>
               <div className="p-8 sm:p-10 flex flex-col">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">Featured</span>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">
+                    Featured
+                  </span>
                   <span>Shop Website</span>
                 </div>
                 <h3 className="mt-4 text-3xl font-bold tracking-tight">Aai Vadapav</h3>
                 <p className="mt-3 text-muted-foreground">
-                  A modern website built for a local Vadapav shop featuring online ordering,
-                  digital menu, responsive design, delivery support and chatbot integration.
+                  A modern website built for a local Vadapav shop featuring online ordering, digital
+                  menu, responsive design, delivery support and chatbot integration.
                 </p>
 
                 <ul className="mt-5 grid grid-cols-2 gap-2 text-sm">
-                  {["Online Ordering", "Delivery Support", "Responsive Design", "24/7 Chatbot Support"].map((f) => (
+                  {[
+                    "Online Ordering",
+                    "Delivery Support",
+                    "Responsive Design",
+                    "24/7 Chatbot Support",
+                  ].map((f) => (
                     <li key={f} className="flex items-center gap-2 text-muted-foreground">
                       <Check className="size-3.5 text-primary" /> {f}
                     </li>
@@ -326,7 +405,10 @@ function Portfolio() {
 
                 <div className="mt-6 flex flex-wrap gap-2">
                   {["React", "Node", "Langchain", "Mongodb", "Vercel"].map((t) => (
-                    <span key={t} className="text-xs rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-muted-foreground">
+                    <span
+                      key={t}
+                      className="text-xs rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-muted-foreground"
+                    >
                       {t}
                     </span>
                   ))}
@@ -349,34 +431,7 @@ function Portfolio() {
             </div>
           </motion.article>
 
-          {/* Placeholders */}
-          {[1, 2].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="glass rounded-3xl p-8 min-h-[260px] flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">Coming soon</span>
-                </div>
-                <h3 className="mt-4 text-2xl font-semibold">Project #{i + 1}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  We're preparing a detailed write-up of our latest launch. Stay tuned.
-                </p>
-              </div>
-              <div className="flex gap-2 mt-6">
-                {["AI", "SaaS", "Design"].map((t) => (
-                  <span key={t} className="text-xs rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-muted-foreground">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+          <ProjectComingSoon projectName="SJCEM CANTEEN" />
         </div>
       </div>
     </section>
@@ -416,7 +471,11 @@ function TechStack() {
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Technologies"
-          title={<>Best-in-class <span className="text-gradient">tools</span>, chosen with intent.</>}
+          title={
+            <>
+              Best-in-class <span className="text-gradient">tools</span>, chosen with intent.
+            </>
+          }
           desc="A curated stack we know deeply — no framework-of-the-week gambles."
         />
 
@@ -450,14 +509,14 @@ function TechStack() {
   );
 }
 
-
 /* ---------- TESTIMONIALS ---------- */
 
 const testimonials = [
   {
     name: "Suresh Mhaske",
     role: "Owner, Aai Vada Pav",
-    quote: "GenAuk delivered our AI platform in weeks, not months. But gave things more than I expected",
+    quote:
+      "GenAuk delivered our AI platform in weeks, not months. But gave things more than I expected",
   },
 ];
 
@@ -467,7 +526,11 @@ function Testimonials() {
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Testimonials"
-          title={<>Kind words from <span className="text-gradient">real partners</span>.</>}
+          title={
+            <>
+              Kind words from <span className="text-gradient">real partners</span>.
+            </>
+          }
         />
 
         <div className="grid md:grid-cols-3 gap-4">
@@ -501,8 +564,6 @@ function Testimonials() {
   );
 }
 
-
-
 /* ---------- ABOUT ---------- */
 
 function About() {
@@ -511,7 +572,11 @@ function About() {
       <div className="mx-auto max-w-4xl px-4 text-center">
         <SectionHeader
           eyebrow="About GenAuk"
-          title={<>A small team, obsessed with <span className="text-gradient">craft</span>.</>}
+          title={
+            <>
+              A small team, obsessed with <span className="text-gradient">craft</span>.
+            </>
+          }
         />
         <motion.blockquote
           initial={{ opacity: 0, y: 16 }}
@@ -527,15 +592,20 @@ function About() {
           viewport={{ once: true }}
           className="text-lg text-muted-foreground leading-relaxed"
         >
-          GenAuk is an AI-focused software studio that builds practical AI solutions, modern web applications, and business automation tools. We believe technology should solve real business problems—not add complexity. Every project is built with clean engineering, thoughtful design, and a focus on long-term value.
+          GenAuk is an AI-focused software studio that builds practical AI solutions, modern web
+          applications, and business automation tools. We believe technology should solve real
+          business problems—not add complexity. Every project is built with clean engineering,
+          thoughtful design, and a focus on long-term value.
         </motion.p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-2 text-xs text-muted-foreground">
-          {["Innovation", "AI", "Technology", "Quality", "Business Growth", "Problem Solving"].map((t) => (
-            <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-              {t}
-            </span>
-          ))}
+          {["Innovation", "AI", "Technology", "Quality", "Business Growth", "Problem Solving"].map(
+            (t) => (
+              <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+                {t}
+              </span>
+            ),
+          )}
         </div>
       </div>
     </section>
@@ -554,8 +624,13 @@ function CTA() {
           viewport={{ once: true }}
           className="relative overflow-hidden rounded-3xl glass-strong p-8 sm:p-12 text-center"
         >
-          <div className="absolute inset-0 opacity-70"
-            style={{ background: "radial-gradient(ellipse at center, oklch(0.66 0.22 285 / 0.35), transparent 60%)" }} />
+          <div
+            className="absolute inset-0 opacity-70"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, oklch(0.66 0.22 285 / 0.35), transparent 60%)",
+            }}
+          />
           <div className="relative">
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
               Let's build something <span className="text-gradient">incredible</span> together.
@@ -567,14 +642,22 @@ function CTA() {
               <a href="mailto:hellogenauk@gmail.com" className="btn-primary">
                 Book a Consultation <ArrowRight className="size-4" />
               </a>
-              <a href="mailto:hellogenauk@gmail.com?subject=Quote%20request" className="btn-ghost">Get a Quote</a>
+              <a href="mailto:hellogenauk@gmail.com?subject=Quote%20request" className="btn-ghost">
+                Get a Quote
+              </a>
             </div>
 
             <div className="mt-8 grid sm:grid-cols-3 gap-3 text-sm text-muted-foreground">
-              <a href="mailto:hellogenauk@gmail.com" className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center hover:border-primary/40 transition-colors">
+              <a
+                href="mailto:hellogenauk@gmail.com"
+                className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center hover:border-primary/40 transition-colors"
+              >
                 <Mail className="size-4 text-primary" /> hellogenauk@gmail.com
               </a>
-              <a href="tel:+918208854485" className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center hover:border-primary/40 transition-colors">
+              <a
+                href="tel:+918208854485"
+                className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center hover:border-primary/40 transition-colors"
+              >
                 <Phone className="size-4 text-primary" /> +91 82088 54485
               </a>
               <div className="glass rounded-xl px-4 py-3 flex items-center gap-2 justify-center">
@@ -598,7 +681,13 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-4 gap-10">
         <div className="md:col-span-1">
           <a href="#home" className="flex items-center gap-2">
-            <img src={LOGO_URL} alt="GenAuk" className="h-9 w-9 rounded-lg" width={36} height={36} />
+            <img
+              src={LOGO_URL}
+              alt="GenAuk"
+              className="h-9 w-9 rounded-lg"
+              width={36}
+              height={36}
+            />
             <span className="font-semibold">GenAuk</span>
           </a>
           <p className="mt-3 text-sm text-muted-foreground max-w-xs">
@@ -606,30 +695,43 @@ function Footer() {
           </p>
           <div className="mt-5 flex gap-2">
             {[Twitter, Linkedin, Github].map((Icon, i) => (
-              <a key={i} href="#" className="inline-grid place-items-center size-9 rounded-full glass hover:border-primary/40 transition-colors">
+              <a
+                key={i}
+                href="#"
+                className="inline-grid place-items-center size-9 rounded-full glass hover:border-primary/40 transition-colors"
+              >
                 <Icon className="size-4" />
               </a>
             ))}
           </div>
         </div>
 
-        <FooterCol title="Quick Links" items={[
-          { l: "Home", href: "#home" },
-          { l: "About", href: "#about" },
-          { l: "Process", href: "#process" },
-          { l: "Contact", href: "#contact" },
-        ]} />
-        <FooterCol title="Services" items={[
-          { l: "AI Agents", href: "#services" },
-          { l: "AI Automation", href: "#services" },
-          { l: "Web Development", href: "#services" },
-          { l: "SaaS Development", href: "#services" },
-          { l: "Mobile Apps", href: "#services" },
-        ]} />
-        <FooterCol title="Portfolio" items={[
-          { l: "Aai Vadapav", href: "https://aai-vada-pav.vercel.app/" },
-          { l: "All Projects", href: "#portfolio" },
-        ]} />
+        <FooterCol
+          title="Quick Links"
+          items={[
+            { l: "Home", href: "#home" },
+            { l: "About", href: "#about" },
+            { l: "Process", href: "#process" },
+            { l: "Contact", href: "#contact" },
+          ]}
+        />
+        <FooterCol
+          title="Services"
+          items={[
+            { l: "AI Agents", href: "#services" },
+            { l: "AI Automation", href: "#services" },
+            { l: "Web Development", href: "#services" },
+            { l: "SaaS Development", href: "#services" },
+            { l: "Mobile Apps", href: "#services" },
+          ]}
+        />
+        <FooterCol
+          title="Portfolio"
+          items={[
+            { l: "Aai Vadapav", href: "https://aai-vada-pav.vercel.app/" },
+            { l: "All Projects", href: "#portfolio" },
+          ]}
+        />
       </div>
 
       <div className="mt-10 border-t border-white/5 pt-5 mx-auto max-w-7xl px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
@@ -647,7 +749,10 @@ function FooterCol({ title, items }: { title: string; items: { l: string; href: 
       <ul className="mt-4 space-y-2">
         {items.map((it) => (
           <li key={it.l}>
-            <a href={it.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href={it.href}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               {it.l}
             </a>
           </li>
@@ -670,11 +775,17 @@ export default function App() {
         />
         <div
           className="absolute top-1/3 -right-40 size-[600px] rounded-full blur-3xl animate-aurora"
-          style={{ background: "radial-gradient(circle, var(--aurora-2), transparent 60%)", animationDelay: "-6s" }}
+          style={{
+            background: "radial-gradient(circle, var(--aurora-2), transparent 60%)",
+            animationDelay: "-6s",
+          }}
         />
         <div
           className="absolute bottom-0 left-1/3 size-[500px] rounded-full blur-3xl animate-aurora"
-          style={{ background: "radial-gradient(circle, var(--aurora-3), transparent 60%)", animationDelay: "-12s" }}
+          style={{
+            background: "radial-gradient(circle, var(--aurora-3), transparent 60%)",
+            animationDelay: "-12s",
+          }}
         />
       </div>
 

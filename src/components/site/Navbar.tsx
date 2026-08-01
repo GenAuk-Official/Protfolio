@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Sun, Moon } from "lucide-react";
-import { useTheme } from "@/hooks/use-theme";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const LOGO_URL = "/genauk-logo.png";
 
@@ -17,8 +16,6 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { theme, toggle } = useTheme();
-
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -39,7 +36,9 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-4">
         <div
           className={`flex items-center justify-between rounded-full border border-white/10 px-4 py-2 transition-all ${
-            scrolled ? "glass-strong shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)]" : "bg-transparent border-transparent"
+            scrolled
+              ? "glass-strong shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)]"
+              : "bg-transparent border-transparent"
           }`}
         >
           <a href="#home" className="flex items-center gap-2 group">
@@ -66,28 +65,11 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={toggle}
-              aria-label="Toggle theme"
-              className="relative inline-grid place-items-center size-9 rounded-full glass hover:border-primary/40 transition-all hover:scale-105 active:scale-95"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={theme}
-                  initial={{ rotate: -90, opacity: 0, scale: 0.6 }}
-                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                  exit={{ rotate: 90, opacity: 0, scale: 0.6 }}
-                  transition={{ duration: 0.25 }}
-                  className="inline-flex"
-                >
-                  {theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
-                </motion.span>
-              </AnimatePresence>
-            </button>
             <a href="#contact" className="btn-primary hidden sm:inline-flex text-xs">
               Book a Free Consultation
               <ArrowRight className="size-3.5" />
             </a>
+
             <button
               className="md:hidden inline-grid place-items-center size-9 rounded-full glass"
               onClick={() => setOpen((v) => !v)}
@@ -96,7 +78,6 @@ export function Navbar() {
               {open ? <X className="size-4" /> : <Menu className="size-4" />}
             </button>
           </div>
-
         </div>
 
         <AnimatePresence>
@@ -117,7 +98,11 @@ export function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <a href="#contact" onClick={() => setOpen(false)} className="btn-primary w-full justify-center mt-2 text-xs">
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="btn-primary w-full justify-center mt-2 text-xs"
+              >
                 Book a Free Consultation
               </a>
             </motion.div>
