@@ -31,7 +31,7 @@ export default function ComingSoonProjectCard({
       <div className="pointer-events-none select-none blur-md opacity-40 grayscale">
         <div className="grid md:grid-cols-2">
           {/* Image */}
-          <div className="relative min-h-[520px] overflow-hidden">
+          <div className="relative aspect-[4/2] overflow-hidden">
             <img src={image} alt={title} className="absolute inset-0 h-full w-full object-cover" />
           </div>
 
@@ -93,17 +93,16 @@ export default function ComingSoonProjectCard({
           {/* Huge Text */}
           <motion.h1
             animate={{
-    scale:[1,1.03,1],
-}}
-transition={{
-    duration:4,
-    repeat:Infinity,
-    ease:"easeInOut"
-}}
+              scale: [1, 1.03, 1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
             className="
           text-6xl
-          md:text-8xl
-          lg:text-9xl
+
           font-black
           uppercase
           tracking-[0.25em]
