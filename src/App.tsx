@@ -424,9 +424,7 @@ function Portfolio() {
                   >
                     Visit Website <ExternalLink className="size-3.5" />
                   </a>
-                  <a href="#contact" className="btn-ghost text-xs">
-                    View Case Study
-                  </a>
+                  
                 </div>
               </div>
             </div>
@@ -441,74 +439,74 @@ function Portfolio() {
 
 /* ---------- TECH STACK ---------- */
 
-const stack: { name: string; slug: string; color: string; invertDark?: boolean }[] = [
-  { name: "React", slug: "react", color: "61DAFB" },
-  { name: "Next.js", slug: "nextdotjs", color: "000000", invertDark: true },
-  { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
-  { name: "Express", slug: "express", color: "000000", invertDark: true },
-  { name: "Python", slug: "python", color: "3776AB" },
-  { name: "FastAPI", slug: "fastapi", color: "009688" },
-  { name: "Flutter", slug: "flutter", color: "02569B" },
-  { name: "Firebase", slug: "firebase", color: "FFCA28" },
-  { name: "Supabase", slug: "supabase", color: "3FCF8E" },
-  { name: "MongoDB", slug: "mongodb", color: "47A248" },
-  { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
-  { name: "Docker", slug: "docker", color: "2496ED" },
-  { name: "AWS", slug: "amazonwebservices", color: "FF9900" },
-  { name: "OpenAI", slug: "openai", color: "412991" },
-  { name: "Anthropic", slug: "anthropic", color: "191919", invertDark: true },
-  { name: "LangChain", slug: "langchain", color: "1C3C3C", invertDark: true },
-  { name: "n8n", slug: "n8n", color: "EA4B71" },
-  { name: "Vercel", slug: "vercel", color: "000000", invertDark: true },
-  { name: "Render", slug: "render", color: "46E3B7" },
-  { name: "GitHub", slug: "github", color: "181717", invertDark: true },
-  { name: "Tailwind CSS", slug: "tailwindcss", color: "06B6D4" },
-  { name: "Framer Motion", slug: "framer", color: "0055FF" },
-];
+// const stack: { name: string; slug: string; color: string; invertDark?: boolean }[] = [
+//   { name: "React", slug: "react", color: "61DAFB" },
+//   { name: "Next.js", slug: "nextdotjs", color: "000000", invertDark: true },
+//   { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
+//   { name: "Express", slug: "express", color: "000000", invertDark: true },
+//   { name: "Python", slug: "python", color: "3776AB" },
+//   { name: "FastAPI", slug: "fastapi", color: "009688" },
+//   { name: "Flutter", slug: "flutter", color: "02569B" },
+//   { name: "Firebase", slug: "firebase", color: "FFCA28" },
+//   { name: "Supabase", slug: "supabase", color: "3FCF8E" },
+//   { name: "MongoDB", slug: "mongodb", color: "47A248" },
+//   { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
+//   { name: "Docker", slug: "docker", color: "2496ED" },
+//   { name: "AWS", slug: "amazonwebservices", color: "FF9900" },
+//   { name: "OpenAI", slug: "openai", color: "412991" },
+//   { name: "Anthropic", slug: "anthropic", color: "191919", invertDark: true },
+//   { name: "LangChain", slug: "langchain", color: "1C3C3C", invertDark: true },
+//   { name: "n8n", slug: "n8n", color: "EA4B71" },
+//   { name: "Vercel", slug: "vercel", color: "000000", invertDark: true },
+//   { name: "Render", slug: "render", color: "46E3B7" },
+//   { name: "GitHub", slug: "github", color: "181717", invertDark: true },
+//   { name: "Tailwind CSS", slug: "tailwindcss", color: "06B6D4" },
+//   { name: "Framer Motion", slug: "framer", color: "0055FF" },
+// ];
 
-function TechStack() {
-  return (
-    <section className="py-14 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4">
-        <SectionHeader
-          eyebrow="Technologies"
-          title={
-            <>
-              Best-in-class <span className="text-gradient">tools</span>, chosen with intent.
-            </>
-          }
-          desc="A curated stack we know deeply — no framework-of-the-week gambles."
-        />
+// function TechStack() {
+//   return (
+//     <section className="py-14 sm:py-20">
+//       <div className="mx-auto max-w-7xl px-4">
+//         <SectionHeader
+//           eyebrow="Technologies"
+//           title={
+//             <>
+//               Best-in-class <span className="text-gradient">tools</span>, chosen with intent.
+//             </>
+//           }
+//           desc="A curated stack we know deeply — no framework-of-the-week gambles."
+//         />
 
-        <div className="flex flex-wrap gap-3 sm:gap-4 justify-center max-w-4xl mx-auto mt-4">
-          {stack.map((t, i) => (
-            <motion.div
-              key={t.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.025 }}
-              whileHover={{ y: -4, scale: 1.1 }}
-              title={t.name}
-              aria-label={t.name}
-              className="group relative grid place-items-center size-16 sm:size-20 glass rounded-2xl hover:border-primary/50 transition-colors cursor-default"
-            >
-              <img
-                src={`https://cdn.simpleicons.org/${t.slug}/${t.color}`}
-                alt={t.name}
-                loading="lazy"
-                className={`size-8 sm:size-10 transition-opacity opacity-90 group-hover:opacity-100${t.invertDark ? " dark:invert" : ""}`}
-              />
-              <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                {t.name}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+//         <div className="flex flex-wrap gap-3 sm:gap-4 justify-center max-w-4xl mx-auto mt-4">
+//           {stack.map((t, i) => (
+//             <motion.div
+//               key={t.name}
+//               initial={{ opacity: 0, scale: 0.8 }}
+//               whileInView={{ opacity: 1, scale: 1 }}
+//               viewport={{ once: true }}
+//               transition={{ delay: i * 0.025 }}
+//               whileHover={{ y: -4, scale: 1.1 }}
+//               title={t.name}
+//               aria-label={t.name}
+//               className="group relative grid place-items-center size-16 sm:size-20 glass rounded-2xl hover:border-primary/50 transition-colors cursor-default"
+//             >
+//               <img
+//                 src={`https://cdn.simpleicons.org/${t.slug}/${t.color}`}
+//                 alt={t.name}
+//                 loading="lazy"
+//                 className={`size-8 sm:size-10 transition-opacity opacity-90 group-hover:opacity-100${t.invertDark ? " dark:invert" : ""}`}
+//               />
+//               <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 text-[10px] text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+//                 {t.name}
+//               </span>
+//             </motion.div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 /* ---------- TESTIMONIALS ---------- */
 
@@ -793,14 +791,13 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Trusted />
+        {/* <Trusted /> */}
+        <About />
         <Services />
 
         <Process />
         <Portfolio />
-        <TechStack />
         <Testimonials />
-        <About />
         <CTA />
       </main>
       <Footer />
