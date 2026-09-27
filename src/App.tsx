@@ -28,9 +28,11 @@ import {
   Linkedin,
   ExternalLink,
 } from "lucide-react";
+import { MessageSquare, Database, Zap, FileText, Brain } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Counter } from "@/components/site/Counter";
 import vadapavImg from "@/assets/project-vadapav.jpg";
+import canteenImg from "@/assets/image.png";
 import ProjectComingSoon from "./components/site/ProjectComingSoon";
 
 /* ---------- shared bits ---------- */
@@ -358,8 +360,8 @@ function Portfolio() {
           desc="A snapshot of the work we've shipped. More case studies coming soon."
         />
 
-        <div className="grid  gap-6">
-          {/* Featured Vadapav project */}
+        <div className="grid gap-6">
+          {/* Featured — Aai Vadapav */}
           <motion.article
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -376,8 +378,10 @@ function Portfolio() {
                   width={1280}
                   height={960}
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-background/40 via-transparent to-transparent" />
               </div>
+
               <div className="p-8 sm:p-10 flex flex-col">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">
@@ -385,7 +389,9 @@ function Portfolio() {
                   </span>
                   <span>Shop Website</span>
                 </div>
+
                 <h3 className="mt-4 text-3xl font-bold tracking-tight">Aai Vadapav</h3>
+
                 <p className="mt-3 text-muted-foreground">
                   A modern website built for a local Vadapav shop featuring online ordering, digital
                   menu, responsive design, delivery support and chatbot integration.
@@ -399,7 +405,8 @@ function Portfolio() {
                     "24/7 Chatbot Support",
                   ].map((f) => (
                     <li key={f} className="flex items-center gap-2 text-muted-foreground">
-                      <Check className="size-3.5 text-primary" /> {f}
+                      <Check className="size-3.5 text-primary" />
+                      {f}
                     </li>
                   ))}
                 </ul>
@@ -422,16 +429,378 @@ function Portfolio() {
                     rel="noreferrer noopener"
                     className="btn-primary text-xs"
                   >
-                    Visit Website <ExternalLink className="size-3.5" />
+                    Visit Website
+                    <ExternalLink className="size-3.5" />
                   </a>
-                  
                 </div>
               </div>
             </div>
           </motion.article>
 
-          <ProjectComingSoon {...project} />
+          {/* SJCEM Canteen */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="group relative glass-strong rounded-3xl overflow-hidden"
+          >
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <img
+                src={canteenImg}
+                alt="SJCEM Canteen"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+            </div>
+
+            <div className="p-7">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">
+                  Platform
+                </span>
+                <span>Smart Canteen</span>
+              </div>
+
+              <h3 className="mt-4 text-2xl font-bold tracking-tight">SJCEM Canteen</h3>
+
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                A complete smart canteen management platform built for St. John College of
+                Engineering & Management with digital menus, QR access and sales analytics.
+              </p>
+
+              <ul className="mt-5 space-y-2 text-sm">
+                {["Digital Menu", "Sales Analytics", "QR Scan for Menu"].map((f) => (
+                  <li key={f} className="flex items-center gap-2 text-muted-foreground">
+                    <Check className="size-3.5 text-primary" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {["React", "Node.js", "Express", "MongoDB", "Cloudinary"].map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-muted-foreground"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {/* <div className="mt-7">
+                <button className="btn-primary text-xs">
+                  View Project
+                  <ExternalLink className="size-3.5" />
+                </button>
+              </div> */}
+            </div>
+          </motion.article>
+
+          {/* RAG API Pipeline */}
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="group relative glass-strong rounded-3xl overflow-hidden"
+          >
+            {/* RAG visual */}
+            <div className="relative aspect-[16/11] sm:aspect-[16/10] overflow-hidden bg-[#08070d]">
+              {/* Ambient glow */}
+              <div className="absolute -left-20 -top-20 h-40 w-40 sm:h-56 sm:w-56 rounded-full bg-purple-600/20 blur-[80px] sm:blur-[100px]" />
+              <div className="absolute -right-20 bottom-0 h-44 w-44 sm:h-56 sm:w-56 rounded-full bg-indigo-500/15 blur-[80px] sm:blur-[100px]" />
+
+              {/* Grid background */}
+              <div
+                className="absolute inset-0 opacity-[0.07]"
+                style={{
+                  backgroundImage: `
+        linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)
+      `,
+                  backgroundSize: "24px 24px",
+                }}
+              />
+
+              <div className="relative flex h-full items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10">
+                <div className="w-full max-w-2xl">
+                  {/* Header */}
+                  <div className="mb-3 sm:mb-5 flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-75" />
+                        <span className="relative inline-flex h-full w-full rounded-full bg-purple-400" />
+                      </span>
+
+                      <span className="text-[8px] sm:text-[10px] font-medium uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/40">
+                        RAG Pipeline
+                      </span>
+                    </div>
+
+                    <span className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-0.5 sm:px-2.5 sm:py-1 text-[7px] sm:text-[9px] text-white/40">
+                      API READY
+                    </span>
+                  </div>
+
+                  {/* Pipeline */}
+                  <div className="relative">
+                    {/* Desktop connection line */}
+                    <div className="absolute left-[8%] right-[8%] top-[42px] hidden h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent lg:block" />
+
+                    {/* Animated desktop pulse */}
+                    <motion.div
+                      animate={{ x: ["0%", "100%"] }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                      className="absolute left-[8%] top-[41px] hidden h-[3px] w-10 rounded-full bg-gradient-to-r from-transparent via-purple-400 to-transparent blur-[1px] lg:block"
+                    />
+
+                    {/* Main nodes */}
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
+                      {/* QUERY */}
+                      <div className="relative z-10">
+                        <div className="flex min-h-[76px] sm:min-h-[90px] lg:h-24 flex-col justify-between rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.045] p-2.5 sm:p-3 backdrop-blur-xl shadow-[0_15px_50px_rgba(0,0,0,0.3)]">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[7px] sm:text-[9px] uppercase tracking-wider text-white/35">
+                              Input
+                            </span>
+
+                            <div className="flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-md sm:rounded-lg bg-purple-500/10">
+                              <MessageSquare className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-purple-300" />
+                            </div>
+                          </div>
+
+                          <div>
+                            <p className="text-[10px] sm:text-[11px] font-medium text-white/80">
+                              User Query
+                            </p>
+
+                            <p className="mt-0.5 truncate text-[7px] sm:text-[8px] text-white/30">
+                              "Find relevant information..."
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* RETRIEVE */}
+                      <div className="relative z-10">
+                        <div className="flex min-h-[76px] sm:min-h-[90px] lg:h-24 flex-col justify-between rounded-xl sm:rounded-2xl border border-purple-400/20 bg-purple-500/[0.06] p-2.5 sm:p-3 backdrop-blur-xl shadow-[0_0_30px_rgba(139,92,246,0.08)]">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[7px] sm:text-[9px] uppercase tracking-wider text-purple-200/40">
+                              Step 01
+                            </span>
+
+                            <Database className="h-3 w-3 text-purple-300/70" />
+                          </div>
+
+                          <div>
+                            <p className="text-[10px] sm:text-[11px] font-medium text-white/80">
+                              Retrieve
+                            </p>
+
+                            <div className="mt-0.5 flex items-center gap-1">
+                              <span className="h-1 w-1 rounded-full bg-purple-400" />
+
+                              <span className="text-[7px] sm:text-[8px] text-white/35">
+                                Vector Search
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* GENERATE */}
+                      <div className="relative z-10">
+                        <div className="flex min-h-[76px] sm:min-h-[90px] lg:h-24 flex-col justify-between rounded-xl sm:rounded-2xl border border-indigo-400/20 bg-indigo-500/[0.06] p-2.5 sm:p-3 backdrop-blur-xl">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[7px] sm:text-[9px] uppercase tracking-wider text-indigo-200/40">
+                              Step 02
+                            </span>
+
+                            <Sparkles className="h-3 w-3 text-indigo-300/70" />
+                          </div>
+
+                          <div>
+                            <p className="text-[10px] sm:text-[11px] font-medium text-white/80">
+                              Generate
+                            </p>
+
+                            <div className="mt-0.5 flex items-center gap-1">
+                              <span className="h-1 w-1 rounded-full bg-indigo-400" />
+
+                              <span className="text-[7px] sm:text-[8px] text-white/35">
+                                LLM Context
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* API */}
+                      <div className="relative z-10">
+                        <div className="flex min-h-[76px] sm:min-h-[90px] lg:h-24 flex-col justify-between rounded-xl sm:rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.045] p-2.5 sm:p-3 backdrop-blur-xl">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[7px] sm:text-[9px] uppercase tracking-wider text-emerald-200/40">
+                              Output
+                            </span>
+
+                            <Zap className="h-3 w-3 text-emerald-300/70" />
+                          </div>
+
+                          <div>
+                            <p className="text-[10px] sm:text-[11px] font-medium text-white/80">
+                              RAG API
+                            </p>
+
+                            <div className="mt-0.5 flex items-center gap-1">
+                              <span className="h-1 w-1 rounded-full bg-emerald-400" />
+
+                              <span className="text-[7px] sm:text-[8px] text-emerald-300/50">
+                                Response Ready
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Data layer */}
+                    <div className="mt-2.5 sm:mt-5 grid grid-cols-3 gap-1.5 sm:gap-3">
+                      {/* Documents */}
+                      <div className="rounded-lg sm:rounded-xl border border-white/8 bg-white/[0.025] p-2 sm:p-3">
+                        <div className="flex items-center gap-1.5 sm:gap-2">
+                          <FileText className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-white/40" />
+
+                          <span className="text-[7px] sm:text-[9px] text-white/40">Documents</span>
+                        </div>
+
+                        <div className="mt-2 sm:mt-3 space-y-1 sm:space-y-1.5">
+                          <div className="h-1 sm:h-1.5 w-full rounded-full bg-white/[0.06]" />
+                          <div className="h-1 sm:h-1.5 w-[75%] rounded-full bg-white/[0.06]" />
+                          <div className="h-1 sm:h-1.5 w-[55%] rounded-full bg-white/[0.06]" />
+                        </div>
+                      </div>
+
+                      {/* Vector DB */}
+                      <div className="rounded-lg sm:rounded-xl border border-purple-400/10 bg-purple-500/[0.025] p-2 sm:p-3">
+                        <div className="flex items-center gap-1.5 sm:gap-2">
+                          <Database className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-purple-300/50" />
+
+                          <span className="text-[7px] sm:text-[9px] text-white/40">Vector DB</span>
+                        </div>
+
+                        <div className="mt-2 sm:mt-3 flex gap-0.5 sm:gap-1">
+                          {[1, 2, 3, 4, 5, 6].map((i) => (
+                            <div
+                              key={i}
+                              className={`h-4 sm:h-5 w-full rounded-sm sm:rounded-md ${
+                                i === 3
+                                  ? "border border-purple-400/20 bg-purple-400/20"
+                                  : "bg-white/[0.04]"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Context */}
+                      <div className="rounded-lg sm:rounded-xl border border-indigo-400/10 bg-indigo-500/[0.025] p-2 sm:p-3">
+                        <div className="flex items-center gap-1.5 sm:gap-2">
+                          <Brain className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-indigo-300/50" />
+
+                          <span className="text-[7px] sm:text-[9px] text-white/40">Context</span>
+                        </div>
+
+                        <div className="mt-2 sm:mt-3 flex flex-wrap gap-1">
+                          <span className="rounded sm:rounded-md bg-indigo-400/10 px-1.5 sm:px-2 py-0.5 sm:py-1 text-[6px] sm:text-[8px] text-indigo-300/60">
+                            relevant
+                          </span>
+
+                          <span className="rounded sm:rounded-md bg-white/[0.04] px-1.5 sm:px-2 py-0.5 sm:py-1 text-[6px] sm:text-[8px] text-white/25">
+                            ranked
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* API status */}
+                    <div className="mt-2 sm:mt-4 flex items-center justify-between rounded-lg sm:rounded-xl border border-white/8 bg-black/20 px-2.5 sm:px-3 py-1.5 sm:py-2">
+                      <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
+                        <span className="font-mono text-[7px] sm:text-[9px] text-purple-300/60">
+                          POST
+                        </span>
+
+                        <span className="truncate font-mono text-[7px] sm:text-[9px] text-white/25">
+                          /api/rag/query
+                        </span>
+                      </div>
+
+                      <div className="flex shrink-0 items-center gap-1 sm:gap-1.5">
+                        <span className="h-1 sm:h-1.5 w-1 sm:w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]" />
+
+                        <span className="text-[7px] sm:text-[8px] text-white/30">Connected</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="p-7">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5">
+                  AI Infrastructure
+                </span>
+                <span>RAG Pipeline</span>
+              </div>
+
+              <h3 className="mt-4 text-2xl font-bold tracking-tight">RAG API Pipeline</h3>
+
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                A ready-to-integrate Retrieval-Augmented Generation pipeline exposed through an API.
+                Applications can connect to the pipeline without building the complete RAG
+                infrastructure themselves.
+              </p>
+
+              <ul className="mt-5 space-y-2 text-sm">
+                {["Document Retrieval", "Context Augmentation", "AI Generated Responses"].map(
+                  (f) => (
+                    <li key={f} className="flex items-center gap-2 text-muted-foreground">
+                      <Check className="size-3.5 text-primary" />
+                      {f}
+                    </li>
+                  ),
+                )}
+              </ul>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {["RAG", "LangChain", "Embeddings", "Vector DB", "REST API"].map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-muted-foreground"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              {/* 
+              <div className="mt-7">
+                <button className="btn-primary text-xs">
+                  Explore Pipeline
+                  <ExternalLink className="size-3.5" />
+                </button>
+              </div> */}
+            </div>
+          </motion.article>
         </div>
+
+        {/* <ProjectComingSoon {...project} /> */}
       </div>
     </section>
   );
