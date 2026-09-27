@@ -688,12 +688,12 @@ function Portfolio() {
                         </div>
                       </div>
 
-                      {/* Vector DB */}
+                      {/* Pinecone */}
                       <div className="rounded-lg sm:rounded-xl border border-purple-400/10 bg-purple-500/[0.025] p-2 sm:p-3">
                         <div className="flex items-center gap-1.5 sm:gap-2">
                           <Database className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-purple-300/50" />
 
-                          <span className="text-[7px] sm:text-[9px] text-white/40">Vector DB</span>
+                          <span className="text-[7px] sm:text-[9px] text-white/40">Pinecone</span>
                         </div>
 
                         <div className="mt-2 sm:mt-3 flex gap-0.5 sm:gap-1">
@@ -780,7 +780,7 @@ function Portfolio() {
               </ul>
 
               <div className="mt-6 flex flex-wrap gap-2">
-                {["RAG", "LangChain", "Embeddings", "Vector DB", "REST API"].map((t) => (
+                {["RAG", "LangChain", "Embeddings", "Pinecone", "REST API"].map((t) => (
                   <span
                     key={t}
                     className="text-xs rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-muted-foreground"
